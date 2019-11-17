@@ -1,15 +1,26 @@
 package com.zzzsj.hystrix;
 
-import com.zzzsj.service.HelloRemote;
+
+import com.zzzsj.model.Student;
+import com.zzzsj.service.StudentService;
 import org.springframework.stereotype.Component;
 
-/**
- * @author 79282
- */
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Component
-public class HelloRemoteHystrix implements HelloRemote {
+public class HelloRemoteHystrix implements StudentService {
+
+
     @Override
-    public String hello(String name) {
-        return "hello world";
+    public List<Student> selectStudentList() {
+        Student student = new Student();
+        student.setId(1);
+        student.setAge("10");
+        student.setName("网吧");
+        List<Student> list = new ArrayList<>();
+        list.add(student);
+        return list;
     }
 }

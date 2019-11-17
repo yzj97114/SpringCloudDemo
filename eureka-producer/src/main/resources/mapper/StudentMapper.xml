@@ -1,0 +1,41 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD com.example.Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zzzsj.mapper.StudentMapper">
+
+
+    <select id="selectStudentList" resultType="com.zzzsj.model.Student">
+        SELECT *
+        FROM student;
+
+    </select>
+
+    <select id="selectStudentById" parameterType="java.lang.Integer" resultType="com.zzzsj.model.Student">
+        SELECT *
+        FROM student
+        where id = #{id};
+
+    </select>
+
+
+    <insert id="insertStudent" parameterType="com.zzzsj.model.Student">
+        INSERT INTO student
+            (name, age)
+        VALUES (#{name}, #{age})
+    </insert>
+
+    <delete id="deleteStudentById" parameterType="java.lang.Integer">
+        delete
+        from student
+        where id = #{id}
+    </delete>
+
+    <update id="updateStudentById" parameterType="com.zzzsj.model.Student">
+        update student
+        set name = #{name},
+            age=#{age}
+        where id = #{id};
+
+    </update>
+</mapper>
